@@ -2091,8 +2091,8 @@ int special_judge(char *oj_home, int problem_id, char *infile, char *outfile,
             // testlib style
             if (DEBUG) printf("testlib spj return: %d\n", ret);
         } else if (access(spjpath, X_OK) == 0) {
-            ret = execute_cmd("%s/data/%d/spj %s %s %s", oj_home, problem_id, infile, outfile,
-                              userfile);    // hustoj style
+            ret = execute_cmd("%s/data/%d/spj %s %s %s", oj_home, problem_id, infile, outfile, userfile);
+            // hustoj style
             if (DEBUG) printf("hustoj spj return: %d\n", ret);
         } else if (spj == 2) {
 
@@ -2142,12 +2142,6 @@ void judge_solution(int &ACflg, int &usedtime, double time_lmt, int spj,
     if (topmemory > mem_lmt * STD_MB)
         ACflg = OJ_ML; //issues79
     // compare
-    printf("===================================\n");
-    printf("===================================\n");
-    printf("--->%d\n", spj);
-    printf("===================================\n");
-    printf("===================================\n");
-    printf("===================================\n");
     if (ACflg == OJ_AC) {
         if (spj) {
             comp_res = special_judge(oj_home, p_id, infile, outfile, userfile, pass_rate, spj);
