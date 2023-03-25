@@ -28,17 +28,8 @@ CONF=/home/judge/etc/judge.conf
 cd /
 umask 077
 
-# hustojadmin likes to read /root/.my.cnf. This is usually not what I want
-# as many admins e.g. only store a password without a username there and
-# so break my scripts.
 export HOME=/home/judge
 
-## Checks if there is a server running and if so if it is accessible.
-#
-# check_dead also fails if there is a lost hustojd in the process list
-#
-# main()
-#
 
 case "${1:-''}" in
   'start')
@@ -55,7 +46,7 @@ case "${1:-''}" in
 	/usr/bin/judged
 	;;
   'status')
-	ps aux|grep judged
+	ps aux | grep judged
   	;;
 
   *)
@@ -64,6 +55,4 @@ case "${1:-''}" in
 	;;
 esac
 
-# Some success paths end up returning non-zero so exit 0 explicitly. See
-# bug #739846.
 exit 0
